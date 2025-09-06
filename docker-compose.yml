@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  yolo-service:
+    build: .
+    container_name: yolo_thumbnail_service
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+      - ./models:/app/models
+      - ./videos:/videos
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
